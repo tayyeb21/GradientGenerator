@@ -1,0 +1,43 @@
+body{
+    font-family: "Century Gothic", 'Arial Narrow', Arial, sans-serif;
+}
+#gradient{
+    background: linear-gradient(to right, #3F5EFB, #FC466B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 50vh;
+}
+.gradient-section{
+    margin-top: 4%;
+    font-size: 15px;
+}
+.property{
+    color: #0d9489;
+}
+.property-function{
+    color: #6895d8;
+}
+.color-code{
+    color: #DC639E;
+}
+.btn-copy{
+    border-radius: 50px;
+    color: white;
+    padding: 10px 35px;
+    margin: 0 23%;
+}
+.btn-copy:hover{
+    color:white;
+    font-weight: 600;
+}
+p{
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+code{
+    overflow-x: auto;
+}
+@media screen and (max-width: 768px){
+    .btn-copy{
+        margin: auto;
+        width: 90%;
+    }
+}
