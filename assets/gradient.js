@@ -39,6 +39,7 @@ function changeColor(){
     .then((response) => response.json())
     .then((data) => {
         //    console.log(data);
+        direction = "right";
         color1 = data.color1;
         color2 = data.color2;
         changeCode();
