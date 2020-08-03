@@ -12,31 +12,20 @@ function changeBackground(){
     .then((response) => response.json())
     .then((data) => {
         //console.log(data);
+
+        document.querySelector('body').style.animationPlayState = "ease-out";
         document.querySelector('body').style.background = `linear-gradient(to right, ${data.color1} , ${data.color2})`;
         
     })
 }
 /** Change Color of Gradient card */
-let color1 = "";
-let color2 = "";
-let direction = "right";
+
 function changeColor(){ 
     fetch("APIs/ChangeColor.php")
     .then((response) => response.json())
     .then((data) => {
         //    console.log(data);
-        color1 = data.color1;
-        color2 = data.color2;
-        direction = "right";
-        document.querySelector("#gradient").style.background = `linear-gradient(to right, ${color1} , ${color2})`;
-        document.querySelectorAll('.btn-link').forEach( (button) => button.style.color = data.color1);
-        document.querySelector('#copybtn').style.background = `linear-gradient(to right, ${color1} , ${color2})`;
-        document.querySelector("#single-color").innerHTML = color1 + ';';
-        document.querySelector("#multi-color-linear").innerHTML  = `${color1} , ${color2}`;
-        document.querySelector("#multi-color-webkit").innerHTML  = `${color1} , ${color2}`;
-        document.querySelector("#dir-linear").innerHTML = direction;
-        document.querySelector("#dir-webkit").innerHTML = direction;
-        document.querySelector("#copybtn").innerHTML = "Copy to clipboard";
+        changeCode(data.color1, data.color2, "right");
     });
 }
 /** Rotate color in gradient card */
@@ -46,15 +35,30 @@ function rotateColor(){
     .then((data) => {
         //console.log(direction);
         //console.log(data);
-        direction = data.direction;
-        document.querySelector("#gradient").style.background = `linear-gradient(to ${data.direction}, ${color1} , ${color2})`;
-        document.querySelector("#dir-linear").innerHTML = direction;
-        document.querySelector("#dir-webkit").innerHTML = direction;
-        document.querySelector("#copybtn").innerHTML = "Copy to clipboard";
+        changeCode(data.color1, data.color2, data.direction);
 
     });
 }
-
+/** Change Text of the code section */
+function changeCode(color1, color2, direction){
+        let gradient = document.querySelector("#gradient");
+        gradient.style.animationPlayState = "running";
+        gradient.style.animationIterationCount = "infinite";
+        
+        document.querySelector("#gradient").style.background = `linear-gradient(to right, ${color1} , ${color2})`;
+        document.querySelectorAll('.btn-link').forEach( (button) => button.style.color = color1);
+        document.querySelector('#copybtn').style.background = `linear-gradient(to right, ${color1} , ${color2})`;
+        document.querySelector("#single-color").innerHTML = color1 + ';';
+        document.querySelector("#multi-color-linear").innerHTML  = `${color1} , ${color2}`;
+        document.querySelector("#multi-color-webkit").innerHTML  = `${color1} , ${color2}`;
+        document.querySelector("#dir-linear").innerHTML = direction;
+        document.querySelector("#dir-webkit").innerHTML = direction;
+        document.querySelector("#copybtn").innerHTML = "Copy to clipboard";
+        setTimeout( () => {
+            gradient.style.animationIterationCount = "initial";
+            gradient.style.animationPlayState = "paused";
+        }, 6000); 
+}
 /** Copy code into the clipboard */
 function copyCode(){
     

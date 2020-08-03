@@ -4,6 +4,8 @@ body{
 #gradient{
     background: linear-gradient(to right, #3F5EFB, #FC466B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     height: 50vh;
+    animation: animate 4s linear alternate;
+    animation-fill-mode: forwards;
 }
 .gradient-section{
     margin-top: 4%;
@@ -35,6 +37,11 @@ p{
 code{
     overflow-x: auto;
 }
+@keyframes animate{
+    from{ opacity:0.5 } 
+    to{ opacity:1 }
+}
+
 @media screen and (max-width: 768px){
     .btn-copy{
         margin: auto;

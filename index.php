@@ -11,7 +11,7 @@
     <script src="assets/gradient.js"></script>
     
 </head>
-<body> 
+<body class="dynamic-bg"> 
     <div class="gradient-section"> 
         <div class="container">
             <div class="row">
