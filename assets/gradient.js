@@ -1,7 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     /* change color api call */
-    document.querySelector('#changeColor').addEventListener('click', changeColor); 
-    document.querySelector('#rotateColor').addEventListener('click', rotateColor); 
+    document.querySelector('#changeColor').addEventListener('click', () => {
+        let Icon = document.querySelector("#changeColorIcon");
+        let prevProperty = Icon.getAttribute("class");
+        Icon.className = prevProperty + " fa-spin";
+        changeColor();  
+        Icon.className = prevProperty;
+    }); 
+    document.querySelector('#rotateColor').addEventListener('click', () => {
+        let Icon = document.querySelector("#rotateColorIcon");
+        let prevProperty = Icon.getAttribute("class");
+        Icon.className = prevProperty + " fa-spin";
+        rotateColor();  
+        Icon.className = prevProperty;
+    });  
     document.querySelector('#copybtn').addEventListener('click', copyCode); 
     changeBackground();
     changeColor();
@@ -19,13 +31,17 @@ function changeBackground(){
     })
 }
 /** Change Color of Gradient card */
-
+let color1 = "";
+let color2 = "";
+let direction = "right";
 function changeColor(){ 
     fetch("APIs/ChangeColor.php")
     .then((response) => response.json())
     .then((data) => {
         //    console.log(data);
-        changeCode(data.color1, data.color2, "right");
+        color1 = data.color1;
+        color2 = data.color2;
+        changeCode();
     });
 }
 /** Rotate color in gradient card */
@@ -35,17 +51,15 @@ function rotateColor(){
     .then((data) => {
         //console.log(direction);
         //console.log(data);
-        changeCode(data.color1, data.color2, data.direction);
+        direction = data.direction;
+        changeCode();
 
     });
 }
 /** Change Text of the code section */
-function changeCode(color1, color2, direction){
-        let gradient = document.querySelector("#gradient");
-        gradient.style.animationPlayState = "running";
-        gradient.style.animationIterationCount = "infinite";
+function changeCode(){
         
-        document.querySelector("#gradient").style.background = `linear-gradient(to right, ${color1} , ${color2})`;
+        document.querySelector("#gradient").style.background = `linear-gradient(to ${direction}, ${color1} , ${color2})`;
         document.querySelectorAll('.btn-link').forEach( (button) => button.style.color = color1);
         document.querySelector('#copybtn').style.background = `linear-gradient(to right, ${color1} , ${color2})`;
         document.querySelector("#single-color").innerHTML = color1 + ';';
@@ -54,10 +68,6 @@ function changeCode(color1, color2, direction){
         document.querySelector("#dir-linear").innerHTML = direction;
         document.querySelector("#dir-webkit").innerHTML = direction;
         document.querySelector("#copybtn").innerHTML = "Copy to clipboard";
-        setTimeout( () => {
-            gradient.style.animationIterationCount = "initial";
-            gradient.style.animationPlayState = "paused";
-        }, 6000); 
 }
 /** Copy code into the clipboard */
 function copyCode(){

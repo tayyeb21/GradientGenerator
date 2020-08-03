@@ -15,13 +15,13 @@
     <div class="gradient-section"> 
         <div class="container">
             <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6">
+                <div class="col-lg-3 col-md-1 col-sm-*"></div>
+                <div class="col-lg-6 col-md-10 col-sm-12">
                     <div class="card">  
                         <div id="gradient" class="card-img-top">
                         </div>
                         <div class="card-body" >
-                            <h6>Code: <button id="changeColor" class="btn btn-link" title="Change Color"><i class="fas fa-sync "></i></button> <button id="rotateColor" class="btn btn-link" title="Rotate Color"><i class="fas fa-undo "></i></button>  </h6>
+                            <h6>Code: <button id="changeColor" class="btn btn-link" title="Change Color"><i id="changeColorIcon" class="fas fa-sync "></i></button> <button id="rotateColor" class="btn btn-link" title="Rotate Color"><i id="rotateColorIcon" class="fas fa-redo "></i></button>  </h6>
                                 <code id="gradientCode">
                                     <p><span class="property">background:</span> <span id="single-color" class="color-code">#3F5EFB</span></p>
                                     <p><span class="property">background:</span> <span class="property-function">linear-gradient (to <span id="dir-linear">right</span>,<span id="multi-color-linear" class='color-code'> #3F5EFB, #FC466B</span>); </span></p>
@@ -37,7 +37,7 @@
                 </div>
                 
 
-                <div class="col-lg-3"></div>
+                <div class="col-lg-3 col-md-1 col-sm-*"></div>
             </div>
         </div>
     </div>

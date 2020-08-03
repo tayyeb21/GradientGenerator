@@ -12,11 +12,11 @@ class RandomGradient{
         }
         function changeDirection($direction){
             if($direction == "right")
-                $this->direction = "left";
-            elseif($direction == "left") 
-                $this->direction = "top";
-            elseif($direction == "top")
                 $this->direction = "bottom";
+            elseif($direction == "bottom") 
+                $this->direction = "left";
+            elseif($direction == "left")
+                $this->direction = "top";
             else
                 $this->direction = "right";
         }
