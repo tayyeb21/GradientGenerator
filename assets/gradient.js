@@ -5,14 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
         let prevProperty = Icon.getAttribute("class");
         Icon.className = prevProperty + " fa-spin";
         changeColor();  
-        Icon.className = prevProperty;
+        setTimeout(() => Icon.className = prevProperty, 1000);
     }); 
     document.querySelector('#rotateColor').addEventListener('click', () => {
         let Icon = document.querySelector("#rotateColorIcon");
         let prevProperty = Icon.getAttribute("class");
         Icon.className = prevProperty + " fa-spin";
         rotateColor();  
-        Icon.className = prevProperty;
+        setTimeout(() => Icon.className = prevProperty, 1000);
     });  
     document.querySelector('#copybtn').addEventListener('click', copyCode); 
     changeBackground();
