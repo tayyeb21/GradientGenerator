@@ -2,17 +2,17 @@ document.addEventListener("DOMContentLoaded", () => {
     /* change color api call */
     document.querySelector('#changeColor').addEventListener('click', () => {
         let Icon = document.querySelector("#changeColorIcon");
-        let prevProperty = Icon.getAttribute("class");
-        Icon.className = prevProperty + " fa-spin";
+        Icon.className = Icon.getAttribute("class").replace("fa-spin","");
+        Icon.className = Icon.getAttribute("class").concat("fa-spin");
         changeColor();  
-        setTimeout(() => Icon.className = prevProperty, 1000);
+        setTimeout(() => Icon.className = Icon.getAttribute("class").replace("fa-spin",""), 1000);
     }); 
     document.querySelector('#rotateColor').addEventListener('click', () => {
         let Icon = document.querySelector("#rotateColorIcon");
-        let prevProperty = Icon.getAttribute("class");
-        Icon.className = prevProperty + " fa-spin";
+        Icon.className = Icon.getAttribute("class").replace("fa-spin","");
+        Icon.className = Icon.getAttribute("class").concat("fa-spin");
         rotateColor();  
-        setTimeout(() => Icon.className = prevProperty, 1000);
+        setTimeout(() => Icon.className = Icon.getAttribute("class").replace("fa-spin",""), 1000);
     });  
     document.querySelector('#copybtn').addEventListener('click', copyCode); 
     changeBackground();
